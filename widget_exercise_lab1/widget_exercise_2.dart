@@ -26,41 +26,110 @@ class MyApp extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        body: Column(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.shopping_cart),
-                    Text('Shopping Cart',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blueAccent,
-                        )),
-                  ],
-                ),
-                Text(' verify quality long text',
-                    style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey,
-                    )),
-                Container(
-                  padding: const EdgeInsets.only(top: 50.0),
-                  child: Column(
+        body: Expanded(
+          child: Column(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      MainCard(),
-                      MainCard(),
+                      Icon(Icons.shopping_cart),
+                      SizedBox(width: 30),
+                      Column(
+                        children: [
+                          Text('Shopping Cart',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blueAccent,
+                              )),
+                          Text(' verify quality long text',
+                              style: TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              )),
+                        ],
+                      )
                     ],
                   ),
-                )
-              ],
-            )
-          ],
+                  Container(
+                    padding: const EdgeInsets.only(top: 50.0),
+                    child: const Column(
+                      children: [
+                        MainCard(),
+                        MainCard(),
+                      ],
+                    ),
+                  ),
+                  Card(
+                    // two rows subtotal and tax both texts
+                    child: Column(
+                      children: [
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text('Subtotal',
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey)),
+                            Text('\$30',
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey)),
+                          ],
+                        ),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text('Tax',
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey)),
+                            Text('\$3',
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey)),
+                          ],
+                        ),
+                        ElevatedButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    Colors.redAccent)),
+                            child: Container(
+                                child: const Row(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Checkout',
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      "6.05\$",
+                                    )
+                                  ],
+                                )
+                              ],
+                            )))
+                      ],
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -85,24 +154,29 @@ class MainCard extends StatelessWidget {
                 width: 100,
                 height: 100,
               ),
-              const Text('Food 1',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-              const Text('Price: \$10',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey)),
+              const Column(
+                children: [
+                  Text('Food 1',
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                  Text('Price: \$10',
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey)),
+                ],
+              ),
               const Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Icon(Icons.add_outlined),
+                  Icon(Icons.add_circle_rounded),
                   Text('3.0'),
-                  Icon(Icons.remove_outlined),
+                  Icon(Icons.remove_circle_rounded),
                 ],
               ),
             ],
           ),
-        )
+        ),
       ],
     );
   }
