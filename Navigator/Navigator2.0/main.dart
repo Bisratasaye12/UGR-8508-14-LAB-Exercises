@@ -42,6 +42,16 @@ class _CourseAppState extends State<CourseApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Navigator(
+        onPopPage: (route, result) {
+         if (!route.didPop(result)) {
+           return false;
+         }
+         setState(() {
+           _selectedCourse = null;
+         });
+         return true;
+       },
+
         pages: [
           MaterialPage(
             key: const ValueKey('CourseListScreen'),
